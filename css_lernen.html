@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>CSS lernen</h1>
+        
+        <p>
+            Neben HTML ist CSS der zweite Schritt, um eine Website
+            zu bauen. Nachdem die Struktur in HTML steht, kommt
+            jetzt das Design hinzu. Dabei lässt sich jedes HTML-Objekt
+            einzeln designen.
+        </p>
+
+        <p>
+            Als erstes würde ich gerne auf jeder Website auf der 
+            linken Seite eine Art Inhaltsverzeichnis basteln,
+            sodass man von jeder Website auf alle anderen
+            zugreifen kann.
+        </p>
+
+        <h1>CSS Dateien erstellen und nutzen</h1>
+
+        <p>
+            Genau so wie HTML-Dateien lassen sich CSS-Dateien
+            einfach erstellen. Wichtig ist aber, dass die Datei nicht
+            mit .html, sondern mit .css endet. Da es für kleinere
+            Websites doch übersichtlicher sein kann, empfehlt es
+            sich erstmal alles in einer main.css Datei zu speichern.
+        </p>
+
+        <p>
+            Um jetzt die CSS-Datei auf unsere HTML-Datei anwenden
+            zu können, muss in der &lnhead&gt-Tag ein 
+            &ltlink rel="stylesheet" href="main.css"&gt 
+            stehen. Hierbei muss die main.css Datei im 
+            selben Ordner wie die HTML-Datei sein.
+        </p>
+
+        <h1>Das Inhaltsverzeichnis</h1>
+
+        <p>
+            Zur Zeit der Erstellung des Inhaltsverzeichnisses gibt es
+            nur drei Seiten: Homepage, HTML lernen und CSS lernen. <br>
+            Die Homepage sollte eine Kategorie werden und die
+            eigentliche Website eine "Über mich".<br>
+            HTML und CSS lernen sollen unter der Kategorie Tutorials
+            gelistet sein.
+        </p>
+
+        <p>
+            CSS kann unterschiedlich viele Elemente gleichzeitig
+            bearbeiten.<br>
+            Ich könnte also mit ul{ } alle unordered list auf der
+            Website auf einmal bearbeiten.<br>
+            Ich könnte aber auch nur ausgewählten Elementen eine
+            Klasse class="speziell" geben und dann mit .speziell
+            eben nur diese verändern.<br>
+            Oder mit einer ID id="einmalig" auf ein einzelnes
+            Element mit dieser ID anpassen.<br>
+            Da das Inhaltsverzeichnis ein einzigartiges Element ist,
+            habe ich die ul class="Inhaltsverzeichnis" definiert.
+        </p>
+
+        <p>
+            Ich möchte, dass die Liste ganz links am Rand liegt.
+            Dafür habe ich erstmal die Stichpunkte und das padding
+            entfernt. Weil ich die Breite nicht in Prozent oder
+            Pixelbreite angeben wollte, habe ich sie jetzt auf
+            die Breite des Inhalts gesetzt. Die Umrandung diente
+            nur als visuelles Feedback:<br>
+            .Inhaltsverzeichnis {<br>
+                list-style-type: none;<br>
+                padding: 0;<br>
+                width: fit-content;<br>
+                border: 1px solid black;<br>
+            }
+        </p>
+
+    </body>
+</html>
