@@ -2,11 +2,18 @@ header {
     text-align: center;
 }
 
+.container {
+    display: table;
+    width: 100%;
+}
+
 #Inhaltsverzeichnis {
     list-style-type: none;
-    padding: 0;
-    width: fit-content;
+    padding: 5px;
     border: 1px solid black;
+    display: table-cell;
+    width: 1%;
+    white-space: nowrap;
 }
 
 .Inhaltsverzeichnis-Kategorie {
@@ -15,7 +22,6 @@ header {
 }
 
 .Inhaltsverzeichnis-Link {
-    /*padding: 20px;*/
     list-style-type: disc;
     list-style-position: inside;
 }
@@ -26,5 +32,7 @@ header {
 }
 
 section {
-    float: left;
+    padding: 5px;
+    border: 1px solid black;
+    display: table-cell;
 }

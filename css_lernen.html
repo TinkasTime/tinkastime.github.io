@@ -69,12 +69,36 @@
             entfernt. Weil ich die Breite nicht in Prozent oder
             Pixelbreite angeben wollte, habe ich sie jetzt auf
             die Breite des Inhalts gesetzt. Die Umrandung diente
-            nur als visuelles Feedback:<br>
+            nur als visuelles Feedback, um zu schauen, wie sich 
+            width mit unterschiedlichen Parametern ändert:<br>
             .Inhaltsverzeichnis {<br>
                 list-style-type: none;<br>
                 padding: 0;<br>
                 width: fit-content;<br>
                 border: 1px solid black;<br>
+            }
+        </p>
+
+        <p>
+            Weiter möchte ich die Listenelemente in zwei Arten einteilen:
+            Einmal mit der Klasse "Inhaltsverzeichnis-Kategorie", die
+            eine Gruppe an weiterführenden Links in eine Kategorie sammelt,
+            leicht fett und unterstrichen sein soll, und einmal mit der 
+            Klasse "Inhaltsverzeichnis-Link", die dann die eben genannten
+            Links sein soll. Diese sollen erstmal als einfacher Text
+            dargestellt und mit den Kreispunkten dargestellt werden:<br>
+            .Inhaltsverzeichnis-Kategorie {<br>
+                font-weight: bolder;<br>
+                text-decoration: underline solid black;<br>
+            }<br>
+            .Inhaltsverzeichnis-Link {<br>
+                list-style-type: disc;<br>
+                list-style-position: inside;<br>
+            }<br>
+            sowie<br>
+            .Inhaltsverzeichnis-Link a {<br>
+                color: inherit;<br>
+                text-decoration: inherit;<br>
             }
         </p>
 
