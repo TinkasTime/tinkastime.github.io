@@ -1,10 +1,10 @@
 body {
     background-color: lightgray;
 }
-a {
+/*a {
     text-decoration: none;
     color: black;
-}
+}*/
 
 
 
@@ -22,12 +22,20 @@ header {
     grid-column: 1 / span 2;
     border: 1px solid black;
 }
+header a {
+    text-decoration: none;
+    color: black;
+}
 
 
 
 nav {
     padding: 1em;
     border: 1px solid black;
+}
+nav a {
+    text-decoration: none;
+    color: black;
 }
 .main-nav{
     list-style-type: none;
