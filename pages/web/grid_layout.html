@@ -1,0 +1,276 @@
+---
+layout: Main_Template
+title: Grid Layout
+permalink: /web/grid-layout/
+---
+
+<p>
+    Jetzt, wo ich ein paar HTML-Tags kenne, wie ordne ich sie richtig an?
+</p>
+
+<p>Ich möchte meine Webseite wie folgt darstellen:</p>
+
+<div class="gl1">
+    <div class="gl1-1">Tinka</div>
+    <div class="gl1-2">Menü</div>
+    <div class="gl1-3">Inhalt<br>...</div>
+</div>
+
+<p>
+    Allein solch eine einfache Darstellung mit einer Überschrift,
+    einem Inhaltsverzeichnis auf der linken Seite und einem
+    Hauptteil war ein Krampf.
+    Ständig rutschte das Inhaltsverzeichnis unter oder
+    über den Hauptteil, da es sich bei der Liste, den Paragraphen
+    und der Überschriften um Block-Elemente handelt, die sich
+    über die gesamte Webseite strecken und andere Elemente
+    in neue Zeilen zwingen.<br>
+    Gäbe es doch nur eine Möglichkeit, die Webseite einfach
+    in kleine Bereiche aufzuteilen, die man dann individuell
+    anpassen kann, ohne die anderen Bereiche zu beeinflussen…
+</p>
+
+<p>… es ist Grid Layout. Die Lösung lautet Grid Layout.</p>
+
+<h1>Das Grid Layout</h1>
+
+<p>
+    Um später beim Programmieren zu wissen, was man macht,
+    was es überhaupt für Eigenschaften gibt und was
+    sie wie beeinflussen, kommt erstmal ein bisschen Theorie.
+</p>
+
+<p>
+    Ich werde absichtlich englische Wörter versuchen zu übersetzen,
+    damit der Text möglichst deutsch bleibt, der Code dann englisch
+    und alle trotzdem wissen, was gemeint ist.
+</p>
+
+<h3>Definitionen und Erklärungen</h3>
+
+<p>
+    Ein <b>Layout</b> (dt. auch Aufteilung oder Grundriss) beschreibt eine
+    Art Plan oder Regeln, um Ordnung zu halten. Ein Alltagsbeispiel
+    wäre der Kleiderschrank, in dem wir unsere Kleider ordentlich
+    lagern. Wir teilen die Teile in Kategorien wie Oberteile oder
+    Socken auf und geben ihnen einen vorbestimmten Platz.
+</p>
+
+<p>
+    Ein <b>Grid</b> (dt. Raster) besteht aus mindestens einer Zelle.
+    Mehrere Zellen nebeneinander bilden eine <b>row</b> (dt. Zeile oder Reihe).
+    Mehrere Zellen untereinander bilden eine <b>column</b> (dt. Spalte).
+    Zusammen entsteht dann ein 'richtiges Raster'.<br>
+    Beginnend bei 1 werden die Zeilen von oben nach unten und die Spalten
+    von links nach rechts nummeriert. Die Zellen werden erst von links
+    nach rechts bis ans Ende der Reihe gezählt, bevor dann eine Reihe
+    tiefer wieder ganz links angefangen wird usw. (Ich dachte, ich schreibe
+    das vorsichtshalber dazu, da man als Programmierer oft bei 0 anfängt zu
+    zählen.)
+</p>
+
+<p>
+    Zwischen den Zellen gibt es die <b>gaps</b> (dt. Lücke). Die Lücken
+    zwischen den Zeilen heißen row-gap, die zwischen den Spalten
+    column-gap.
+</p>
+
+<p>
+    Um ein Raster mit Grid Layout zu bauen, braucht es ein 
+    &ltdiv&gt-Element, welcher als <b>Container</b> dient. In der
+    Programmierung beschreibt ein Container oder Parent (dt. Eltern(teil))
+    ein Element, welches als das übergeordnete Element gilt.<br>
+    Weitere &ltdiv&gt-Elemente, die dann in den Container kommen, werden
+    <b>Items</b> (dt. Ding) genannt.<br>
+    Im Fall von Grid Layout wäre also unser Container der Rahmen vom
+    Raster und alle Zeilen, Spalten und Zellen sind dann die Items.
+</p>
+
+<p>
+    Am Anfang bietet es sich an, zuerst ein ungefähres Bild auf Papier zu bringen
+    und dabei folgende Fragen zu beantworten:<br>
+    <ul>
+        <li>
+            Wo soll das Grid auf der Webseite sein?
+        </li>
+        <li>
+            Soll das Grid ein Block- oder Listen-Element sein? Sprich soll es
+            selbstständig rausstechen (Block) oder von anderen Elementen wie 
+            Texte und Bilder umschlossen (inline) sein?
+        </li>
+        <li>
+            Wie groß soll das Grid sein? Wie viele Reihen? Wie viele Spalten?
+        </li>
+    </ul>
+</p>
+
+<!--Weitere Sachen, die vielleicht erklärt werden sollten:
+    auto, name -->
+
+<h3>Eigenschaften und Werte</h3>
+
+<p>
+    Um ein Grid Layout zu bauen, brauchen wir den Container und unsere Items.
+    Folgender Code zeigt ein Beispiel in HTML:<br>
+</p>
+<p>
+    HTML:<br>
+    &ltdiv class="container"&gt<br>
+        &emsp;&ltdiv class="item1"&gtÜberschrift&lt/div&gt<br>
+        &emsp;&ltdiv class="item2"&gtMenü&lt/div&gt<br>
+        &emsp;&ltdiv class="item3"&gtInhalt&lt/div&gt<br>
+    &lt/div&gt
+</p>
+
+<p>
+    Wie oben beschrieben, brauchen wir ein &ltdiv&gt-Element, welches 
+    als unser Container dient, indem dann all unsere Items reinkommen.
+    Wir geben dem Element die class="container", um unser Grid Layout 
+    in CSS anzupassen. Mit dem class-Attribut verhindern wir, dass wir 
+    alle &ltdiv&gt-Elemente verändern, denn ein &ltdiv&gt-Element kann 
+    für sehr viele verschiedene Dinge benutzt werden, nicht nur Grid
+    Layouts. Solltest du mehrere Grid Layouts benutzen, beachte, dass
+    dann alle mit dem class="container" Attribut von CSS bearbeitet
+    werden. Wenn du individuelle Grid Layouts hast, eignet sich 
+    vielleicht sogar das id-Attribut...<br>
+    Im Container habe ich drei Items reingetan. Jedes hat seine 
+    eigene Klasse, damit ich sie einzeln anpassen kann. Der Inhalt 
+    vom &ltdiv&gt-Element wird in der Zelle angezeigt, hier Überschrift,
+    Menü und Inhalt.
+</p>
+
+<p>
+    Steht das Grid Layout, müssen wir es in CSS anpassen. 
+    Zuerst sollte man sich um den Container kümmern.
+    Folgender Code zeigt ein Beispiel in CSS:<br>
+</p>
+<p>
+    CSS:<br>
+    .container {<br>
+        &emsp;display: inline-grid;<br>
+        <br>
+        &emsp;grid-template-rows: 2;<br>
+        &emsp;grid-template-columns:2;<br>
+    }
+</p>
+
+<p>
+    Die erste Eigenschaft 'display' hat zwei mögliche Werte.
+    Der Wert 'grid' definiert das komplette Grid Layout als 
+    ein Block-Element, der Wert 'inline-grid' definiert das Grid 
+    als Inline-Element. Ein Beispiel für ein Block-Grid-Layout wäre
+    meine ganze Webseite. Sie eignet sich eher für Grid Layouts,
+    die möglichst den ganzen Platz der Webseite einnehmen.
+    Ein Beispiel für ein Inline-Grid-Layout ist
+    die kleine Grafik nach dem ersten Absatz am Anfang der Webseite. So
+    kann man kleinere Layouts bauen, die zum Beispiel in mitten anderer
+    Elemente stehen.
+    Und ja, man kann auch Grid Layouts in Grid Layouts basteln.<br>
+    Die Eigenschaften 'grid-template-rows' und 'grid-template-columns'
+    sind dazu da, um die Anzahl an Reihen und Spalten zu definieren.
+    Mein Grid Layout wird also zwei Reihen, für die Überschrift sowie
+    Menü und Inhalt, und zwei Spalten, dann jeweils eine für das Menü
+    und die andere für den Inhalt, bestehen.
+</p>
+
+<p>
+    Die Items haben ihre eigenen Eigenschaften. Folgender Code zeigt ein 
+    Beispiel in CSS:
+</p>
+
+<p>
+    CSS:<br>
+    .item1{<br>
+        &emsp;grid-column-start: 1;<br>
+        &emsp;grid-column-end: 3;<br>
+        &emsp;/*oder kurz:*/<br>
+        &emsp;grid-column: 1 / 3;<br>
+        &emsp;/*oder*/<br>
+        &emsp;grid-column: 1 / span 2;<br>
+    }
+</p>
+
+<p>
+    Ich möchte mein erstes Item, also die Überschrift, über die ganze 
+    Reihe strecken. Hier sieht man bereits: Es gibt mehrere Wege, dies
+    zu erreichen.<br>
+    Die erste Möglichkeit ist die präziseste. Mit grid-column-start und 
+    -end wird angegeben, in welcher Spalte das Item anfängt und in welcher 
+    Spalte sie aufhört. Wichtig ist hierbei zu beachten, dass der Start 
+    inklusiv ist und das Ende exklusiv. Das heißt, auch wenn die dritte
+    Spalte das Ende sein soll, hört das Item vor der dritte Spalte auf,
+    erstreckt sich also nur über die erste und zweite Spalte.<br>
+    Die zweite Möglichkeit beschreibt das selbe wie die erste, nur in 
+    Kurzform. Die erste Zahl gibt den Start an, die zweite das exklusive
+    Ende. Beide Zahlen müssen mit dem Zeichen '/' getrennt sein.<br>
+    Die dritte Möglichkeit beschreibt auch das selbe Verhalten, hat aber 
+    einen kleinen Unterschied. Das Wort 'span' bedeutet 'spannen' und 
+    gibt an, über wie viele Spalten das Item gespannt werden soll. Diese
+    Variante ist bei Grid Layouts geeigneter, die in Zukunft noch
+    regelmäßig bearbeitet und erweitert wird. Die ersten beiden Möglichkeiten
+    sind eher statisch und müssen ständig angepasst werden.<br>
+    Diese Eigenschaften gibt es auch in Bezug auf die Reihen:<br>
+    grid-row-start, grid-row-end und grid-row.
+</p>
+
+<h3>Kompakte Liste</h3>
+
+<p>
+    Ich sortiere in Eigenschaften für den Container und für die Items.
+</p>
+
+<table>
+    <tr>
+        <th colspan="2">Container</th>
+    </tr>
+    <tr>                    <!--bei jeder neuen Tabellenzeile-->
+        <th>Property</th>   <!--Kopfzeile-->
+        <th>Value</th>
+    </tr>
+    <tr>
+        <td>display:</td>
+        <td>grid<br>inline-grid</td>
+    </tr>
+    <tr>
+        <td>grid-template-rows:</td>
+        <td>&ltint&gt</td>
+    </tr>
+    <tr>
+        <td>grid-template-columns:</td>
+        <td>&ltint&gt</td>
+    </tr>
+</table>
+<br>
+<table>
+    <tr>
+        <th colspan="2">Items</th>
+    </tr>
+    <tr>
+        <th>Property</th>
+        <th>Value</th>
+    </tr>
+    <tr>
+        <td>grid-row-start:</td>
+        <td>&ltint&gt<br>span &ltint&gt</td>
+    </tr>
+    <tr>
+        <td>grid-row-end:</td>
+        <td>&ltint&gt<br>span &ltint&gt</td>
+    </tr>
+    <tr>
+        <td>grid-row:</td>
+        <td>&ltint&gt / &ltint&gt<br>&ltint&gt / span &ltint&gt</td>
+    </tr>
+    <tr>
+        <td>grid-column-start:</td>
+        <td>&ltint&gt<br>span &ltint&gt</td>
+    </tr>
+    <tr>
+        <td>grid-column-end:</td>
+        <td>&ltint&gt<br>span &ltint&gt</td>
+    </tr>
+    <tr>
+        <td>grid-column:</td>
+        <td>&ltint&gt / &ltint&gt<br>&ltint&gt / span &ltint&gt</td>
+    </tr>
+</table>

@@ -1,0 +1,141 @@
+---
+layout: Main_Template
+title: HTML lernen
+permalink: /web/html-lernen/
+---
+
+<h1>HTML lernen</h1>
+
+<p>
+    Wenn man meine <a href="/">Homepage</a> sieht,
+    ist das erste, was einem auffällt wahrscheinlich:<br>
+    ist das erste, was einem auffällt, wahrscheinlich:<br>
+    Ich habe keine Ahnung von CSS und eigentlich auch HTML
+    (und JavaScript, aber das kommt viel später).
+</p>
+
+<P>
+    Daher notiere ich mir hier alles, was ich erstmal zu HTML
+    lerne, gängige Fehler, die ich gemacht habe, oder einfach
+    nur Informationen. Wenn einiges an Material zusammen
+    gekommen ist, werde ich hier ein richtiges Tutorial basteln.
+</P>
+
+<p>
+    Bis dahin oder um einfache Informationen zu bestimmten Tags
+    nachzuschlagen, eignet sich
+    <a href="https://developer.mozilla.org/de/docs/Web/HTML">diese Dokumentation</a>
+    sehr gut dazu.
+</p>
+
+<h2>Die harte Arbeit vorab</h2>
+
+<p>
+    Bevor ich überhaupt die Idee entwickelte, eine eigene Homepage
+    zu basteln, dachte ich, eine Website online zu stellen sei ein
+    Kinderspiel. Oh boy was I wrong...
+</p>
+
+<p>
+    Ich habe bei der Domain angefangen. Wie soll die URL der Website
+    lauten? Bei mir lautet die Domain "tinkastime.de", also ich
+    wollte meine Website unter "www.tinkastime.de" erreichen.
+    Glücklicherweise war diese Adresse unbenutzt und so konnte ich
+    bei IONOS mir die Domain "tinkastime.de" kaufen.<br>
+    <em>Anmerkung: Einige Fachbegriffe werden Themenübergreifend
+        verwendet oder mehrere Wörter beschreiben das gleiche. Ich
+        blicke da selbst noch nicht ganz durch.
+    </em>
+</p>
+
+<p>
+    Was ich nicht wusste, die Website muss irgendwo gehostet werden und
+    anders als eine Domain, wurden Hostings für relativ viel Geld
+    angeboten. Ich habe sehr oft gelesen, dass man einfach einen 
+    eigenen Server aufsetzen könnte, aber davon hatte ich noch weniger
+    Ahnung. Am Ende erfuhr ich von Github Pages und da ich schon einen
+    Github Account besaß und mich mit Git doch etwas auskannte, wird
+    meine Website von Github gehostet. Vielen Dank Github! Hier das
+    <a href="https://docs.github.com/en/pages/quickstart">Tutorial</a>.
+</p>
+
+<h2>HTML Dateien erstellen</h2>
+
+<p>
+    Ich benutze zum Programmieren normalerweise Visual Studio Code
+    <a href="https://code.visualstudio.com/download">(Download-Link)</a>.
+    Hat man sich dazu entschieden, wo die Dateien gespeichert werden soll,
+    öffnet man den Ordner, der in VSC als "Explorer" bezeichnet wird.
+    Neue Dateien lassen sich hier ganz einfach erstellen, wobei nach dem Dateinamen
+    das ".html" kommen muss (z.B. "index.html").<br>
+    Die Extension "open in browser" von TechER erlaubt es mir, die HTML Datei
+    im Browser zu öffnen und gibt mir so ein gutes, visuelles Feedback.
+</p>
+
+<p>
+    Wenn ich meine HTML Datei überarbeite und speichere, lässt sich
+    die lokale Website durch das einfache "Neu laden" sofort aktualisieren,
+    aber damit die Website im Internet aktualisiert wird, muss man seine 
+    Änderungen auf Github commiten und dann eine Zeit lang warten. Also
+    commite lieber nach kleinen Meilensteinen und bearbeite Kleinigkeiten
+    lokal.
+</p>
+
+<h2>Die ersten HTML-Tags</h2>
+
+<ul>
+    <li>
+        &lt!DOCTYPE html&gt - Muss in der ersten Zeile des HTML-Dokuments stehen, da 
+        sie dem Computer klar macht, dass es sich hier um ein HTML-Dokument handelt.
+    </li>
+    <li>
+        &lthtml&gt &lt/html&gt - Ist der erste Tag, in dem alle anderen Tags 
+        enthalten ist.
+    </li>
+    <li>
+        &ltbody&gt &lt/body&gt - Ein HTML-Dokument teilt sich in zwei Teile auf, dem
+        Head-Teil und dem Body-Teil. Nur der Body-Teil ist der sichtbare Teil, der auf
+        der Website dargestellt wird.
+    </li>
+    <li>
+        &lth1&gt &lt/h1&gt - Text innerhalb dieser Tags werden als Überschrift dargestellt
+    </li>
+    <li>
+        &ltp&gt &lt/p&gt - Text innerhalb dieser Tags werden als Paragraph angezeigt.
+    </li>
+    <li>
+        &ltbr&gt - Fängt innerhalb eines Paragraphen eine neue Zeile an. Zwei &ltbr&gt
+        hintereinander sorgen dementsprechend für eine leere Zeile, aber ein neuer
+        &ltp&gt-Abschnitt hat den selben Effekt.
+    </li>
+    <li>
+        Die eckigen Klammern &lt &gt werden von HTML benutzt, um Tags zu erkennen. Um die
+        Zeichen trotzdem im &ltp&gt anzeigen zu lassen, braucht es &amplt und &ampgt.
+    </li>
+    <li>
+        &lta href="Link"&gtText&lt/a&gt - Gibt einen Link an, der mit href gesetzt wird.
+        In dem &lta&gt-Tag steht der Text, der anstelle der URL angezeigt werden soll.
+        Zwischen den &lta&gt-Tags steht der Text, der anstelle der URL angezeigt werden soll.
+        Vergiss das &gt zwischen dem Link und dem Text nicht.
+    </li>
+    <li>
+        &ltul&gt &lt/ul&gt - Erzeugt eine unsortierte Liste. Die Listenelemente werden
+        in der Reihenfolge dargestellt, wie sie im HTML-Dokument niedergeschrieben wurden.
+    </li>
+    <li>
+        &ltli&gt &lt/li&gt - Alle Listenelemente müssen jeweils in diesen Tags stehen.
+    </li>
+</ul>
+
+<h2>Inline- und Block-Elemente</h2>
+
+<p>
+    HTML-Elemente können inline oder blockartig sein. Das hat 
+    einen Einfluss darauf, wie die Elemente auf der
+    Website positioniert werden. Blockartige Elemente werden 
+    immer in einer neuen Zeile eingefügt und ihre Breite
+    erstreckt sich über die ganze Website.<br>
+    Daher lässt sich mein Inhaltsverzeichnis nicht so 
+    einfach neben den Text platzieren, da sowohl
+    &ltp&gt als auch &ltul&gt und &ltli&gt Block-Elemente sind.
+</p>

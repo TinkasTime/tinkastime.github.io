@@ -1,0 +1,50 @@
+---
+layout: Main_Template
+title: Java AWT Mauseingaben
+permalink: /java/mouseinput.html
+---
+
+<p>
+    Java bietet einem als Programmierer mehrere Möglichkeiten,
+    Eingaben mit einer Maus zu verarbeiten.<br>
+    Hier soll es explizit um Java AWT und Swing gehen.
+</p>
+
+<h1>Mauseingaben mit Java AWT und Swing</h1>
+
+<p>
+    Eines kurz zusammengefasst:<br>
+    Mit Java AWT war es zum ersten Mal möglich, mit Java graphische Oberflächen
+    zu erstellen. Aufgrund interner Entscheidungen folgte Java Swing, welches auf
+    AWT aufbaut und nutzt. Deshalb wird, obwohl mit Swing programmiert wird, oft
+    auch java.awt importiert. AWT und Swing sind jedoch nicht das selbe!
+</p>
+
+<h2>Definitionen und Erklärungen</h2>
+
+<p>
+    Normalerweise macht dein Programm seine Sachen, ohne darauf zu
+    achten, was um es herum passiert. Dies sorgt für einen 
+    schnellen und gezielten Ablauf des Programms. Wenn das Programm 
+    jetzt aber auf unsere Maus reagieren soll, brauchen wir 
+    einen Listener (dt. eher Horcher). Der Listener beobachtet unsere
+    Maus und wenn die Maus etwas tut, was einen Einfluss auf unseren
+    Programm haben soll, kriegt das der Listener mit und kontaktiert
+    unser Programm, sodass es auf unsere Maus reagiert.
+</p>
+
+<p>
+    Eine Maus kann verschiedene Events (dt. Aktionen) auslösen,
+    die individuell behandelt werden können. Wir müssen dem Listener
+    mitteilen, auf welche Events er achten soll und was dann getan
+    werden muss. Java unterscheidet zwischen zwei Arten von Events.<br>
+    Die Mouse Events decken das Drücken einer Maustaste, das Loslassen
+    einer Taste sowie das komplette Klicken (also klicken und loslassen) ab.
+    Dazu gehört auch, wenn der Mauszeiger auf ein bestimmtes Element
+    trifft oder verlässt. Ein Beispiel hierfür wäre wie sich der Mauszeiger
+    ändert, wenn er auf eine Scrollleiste an der rechten Fensterseite
+    geführt wird.<br>
+    Die Mouse Motion Events sind eher für die Bewegungen der Maus da.
+    Dazu zählt die einfache Bewegung als auch das Bewegen mit einer 
+    gedrückten Taste.
+</p>

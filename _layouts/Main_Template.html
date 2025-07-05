@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale="1.0">
+        <title>{{ page.title }} | Tinkas Webseite </title>
+        <link rel="stylesheet" href="/assets/css/main.css">
+    </head>
+    <body>
+
+        <div class="container">
+
+            <header>
+                <p id="TinkasWebseite"><a href="/">Tinkas Webseite</a></p>
+            </header>
+
+            <nav>
+                <ul class="main-nav">
+                    <li class="Kategorie">Homepage</li>
+                    <li class="Link"><a href="/">Über mich</a></li>
+
+                    <li class="Kategorie">Projekte</li>
+                    <li class="Link"><a href="/meine-projekte/">Meine Webseite</a></li>
+
+                    <li class="Kategorie">Web</li>
+                    <li class="Link"><a href="/web/html-lernen/">HTML lernen</a></li>
+                    <li class="Link"><a href="/web/css-lernen/">CSS lernen</a></li>
+                    <li class="Link"><a href="/web/grid-layout/">Grid Layout lernen</a></li>
+
+                    <li class="Kategorie">Java</li>
+                    <li class="Link"><a href="/java/mouseinput/">Mauseingaben</a></li>
+                </ul>
+            </nav>
+
+            <main>
+                {{ content }}
+            </main>
+        </div>
+    </body>
+</html>

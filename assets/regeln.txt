@@ -1,0 +1,13 @@
+Nutze englische Wörter und übersetze sie beim erstmal:
+translate (dt. Übersetzung)
+
+Nutze Abkürzungen und schreibe sie beim erstmal aus:
+HTML (Hypertext Markup Language)
+
+Versuche die Webseite mit einem einfach Spruch einzuleiten.
+
+Wenn du eine .html in einem Ordner hast, passe den Stylesheet
+zu "../main.css" an.
+
+Die Überschrift der Webseite (nicht Tinkas Webseite) ist mit
+h1 zu markieren, weitere Überschriften mit h2.
