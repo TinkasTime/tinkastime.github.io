@@ -10,6 +10,8 @@ permalink: /java/mouseinput.html
     Hier soll es explizit um Java AWT und Swing gehen.
 </p>
 
+
+
 <h1>Mauseingaben mit Java AWT und Swing</h1>
 
 <p>
@@ -20,31 +22,261 @@ permalink: /java/mouseinput.html
     auch java.awt importiert. AWT und Swing sind jedoch nicht das selbe!
 </p>
 
+
+
 <h2>Definitionen und Erklärungen</h2>
 
 <p>
-    Normalerweise macht dein Programm seine Sachen, ohne darauf zu
-    achten, was um es herum passiert. Dies sorgt für einen 
-    schnellen und gezielten Ablauf des Programms. Wenn das Programm 
-    jetzt aber auf unsere Maus reagieren soll, brauchen wir 
-    einen Listener (dt. eher Horcher). Der Listener beobachtet unsere
-    Maus und wenn die Maus etwas tut, was einen Einfluss auf unseren
-    Programm haben soll, kriegt das der Listener mit und kontaktiert
-    unser Programm, sodass es auf unsere Maus reagiert.
+    Normalerweise macht dein Programm seine Sachen, ohne darauf zu achten, was um es herum passiert. Dies sorgt für einen schnellen und gezielten Ablauf des Programms. Wenn das Programm jetzt aber auf unsere Maus reagieren soll, brauchen wir einen <b>Listener</b> (dt. eher Horcher). Der Listener beobachtet unsere Maus und wenn die Maus etwas tut, was einen Einfluss auf unseren Programm haben soll, kriegt das der Listener mit und kontaktiert unser Programm, sodass es auf unsere Maus reagiert.
 </p>
 
 <p>
-    Eine Maus kann verschiedene Events (dt. Aktionen) auslösen,
-    die individuell behandelt werden können. Wir müssen dem Listener
-    mitteilen, auf welche Events er achten soll und was dann getan
-    werden muss. Java unterscheidet zwischen zwei Arten von Events.<br>
-    Die Mouse Events decken das Drücken einer Maustaste, das Loslassen
-    einer Taste sowie das komplette Klicken (also klicken und loslassen) ab.
-    Dazu gehört auch, wenn der Mauszeiger auf ein bestimmtes Element
-    trifft oder verlässt. Ein Beispiel hierfür wäre wie sich der Mauszeiger
-    ändert, wenn er auf eine Scrollleiste an der rechten Fensterseite
+    Eine Maus kann verschiedene <b>Events</b> (dt. Aktionen) auslösen, die individuell behandelt werden können. Wir müssen dem Listener mitteilen, auf welche Events er achten soll und was dann getan werden muss. Java unterscheidet zwischen zwei Arten von Events.<br>
+    Die Mouse Events decken das Drücken einer Maustaste, das Loslassen einer Taste sowie das komplette Klicken (also klicken und loslassen) ab. Dazu gehört auch, wenn der Mauszeiger auf ein bestimmtes Element trifft oder verlässt. Ein Beispiel hierfür wäre wie sich der Mauszeiger ändert, wenn er auf eine Scrollleiste an der rechten Fensterseite
     geführt wird.<br>
-    Die Mouse Motion Events sind eher für die Bewegungen der Maus da.
-    Dazu zählt die einfache Bewegung als auch das Bewegen mit einer 
-    gedrückten Taste.
+    Die Mouse Motion Events sind eher für die Bewegungen der Maus da. Dazu zählt die einfache Bewegung als auch das Bewegen mit einer gedrückten Taste.
+</p>
+
+
+
+<h3>MouseEvents</h3>
+<p>
+    Für gewöhnlich werden die Mouse Events in einer separaten Klasse (hier jetzt MausHandler) behandelt. Dazu kann dann das <b>Interface MouseListener</b> implementiert werden. Als Interface werden Methoden bereits gestellt, nämlich mousePressed, mouseReleased, mouseclicked, mouseEntered und mouseExited, die mit @Override überschrieben werden müssen, auch wenn vielleicht gar nicht alle Methoden gebraucht werden.
+</p>
+
+<p>
+    Eine zweite Möglichkeit ist das Erben von der <b>Klasse MouseAdapter</b>. Damit ändert sich der Schlüsselbegriff von implements zu extends. Diese Klasse hat alle Methoden von MouseListener bereits (leer) überschrieben. Daher können die Methoden, die du nicht brauchst, auch komlett weggelassen werden.
+</p>
+
+<p>
+    Codeschnipsel, wie überschriebene Methoden von MouseListener, die nicht benutzt werden, werden als Boilerplate-Code bezeichnet. Solche Codeschnipsel fügen keine neue Logik oder Funktionalität hinzu und können deinen Code eventuell sogar schwerer lesbarer machen oder sogar anfällig für Fehler sein. Dennoch musst du alle Methoden eines Interfaces überschreiben, was die Codeschnipsel unnötig aber trotzdem wichtig macht. Paradox, ich weiß. Vermeide also eher Interfaces wie MouseListener, wenn es bereits Klassen wie MouseAdapter gibt.
+</p>
+
+<p>
+    Wird eine Maustaste geklickt, werden die Methoden in der folgenden Reihenfolge aufgrufen: mousePressed, mouseReleased, mouseClicked.<br>
+    Daher empfehle ich, diese Reihenfolge der Methoden auch so in der Klasse niederzuschreiben, um eventuelle Missverständnisse beim Programmieren vorzubeugen.
+</p>
+
+<p><b>Code-Template mit MouseListener-Interface</b></p>
+
+<p><b>MausHandler-Klasse:</b></p>
+<pre><code>
+    import java.awt.event.MouseEvent;
+    import java.awt.event.MouseListener;
+    
+    public class MausHandler implements MouseListener {
+        
+        //Konstruktor optional
+        public MausHandler() {}
+        
+        @Override
+        public void mousePressed(MouseEvent e) {}
+        
+        @Override
+        public void mouseReleased(MouseEvent e) {}
+        
+        @Override
+        public void mouseClicked(MouseEvent e) {}
+        
+        @Override
+        public void mouseEntered(MouseEvent e) {}
+        
+        @Override
+        public void mouseExited(MouseEvent e) {}
+    }
+</code></pre><br>
+
+<p><b>Main-Klasse:</b></p>
+<pre><code>
+    ...
+    import javax.swing.JButton;
+    ...
+    
+    public class Main {
+    
+        ...
+
+            //eine Methode
+            ...
+            JButton button = new JButton();
+            MausHandler mh = new MausHandler();
+        
+            //vergiss nicht, die neue Klasse als Listener an ein Component anzuhängen:
+            button.addMouseListener(mh);
+            ...
+        
+        ...
+    }
+</code></pre><br>
+
+<p><b>Code-Template mit MouseAdapter-Klasse</b></p>
+
+<p><b>MausHandler-Klasse:</b></p>
+<p>Alle @Override-Methoden sind optional. Bitte lösche alle Methoden, die du leer lässt.</p>
+<pre><code>
+    import java.awt.event.MouseEvent;
+    import java.awt.event.MouseAdapter; //Wichtig! Der Import ändert sich
+    
+    public class MausHandler extends MouseAdapter {
+        
+        //Konstruktor optional
+        public MausHandler() {}
+        
+        //Methode optional
+        @Override
+        public void mousePressed(MouseEvent e) {}
+        
+        //Methode optional
+        @Override
+        public void mouseReleased(MouseEvent e) {}
+        
+        //Methode optional
+        @Override
+        public void mouseClicked(MouseEvent e) {}
+        
+        //Methode optional
+        @Override
+        public void mouseEntered(MouseEvent e) {}
+        
+        //Methode optional
+        @Override
+        public void mouseExited(MouseEvent e) {}
+    }
+</code></pre><br>
+
+<p><b>Main-Klasse:</b></p>
+<p>Es ändert sich nichts für die Main-Klasse.</p>
+<pre><code>
+    ...
+    import javax.swing.JButton;
+    ...
+    
+    public class Main {
+    
+        ...
+
+            //eine Methode
+            ...
+            JButton button = new JButton();
+            MausHandler mh = new MausHandler();
+        
+            //vergiss nicht, die neue Klasse als Listener an ein Component anzuhängen:
+            button.addMouseListener(mh);
+            ...
+        
+        ...
+    }
+</code></pre><br>
+
+
+
+<h3>MouseMotionEvents</h3>
+
+<p>
+    Auch für die MouseMotionEvents gibt es jeweils das <b>MouseMotionListener-Interface</b> und die <b>MouseMotionAdapter-Klasse</b>.<br>
+    Für die MouseMotionEvents werde ich unsere Klasse MausMotionHandler nennen.
+</p>
+
+<p>
+    Das MouseMotionListener-Interface besitzt nur zwei Methoden, mouseDragged und mouseMoved.<br>
+    <b>mouseDragged</b> wird ausgelöst, wenn auf ein Component wie ein Fenster eine Maustaste gedrückt gehalten wird und das Component so verschoben wird.<br>
+    <b>mouseMoved</b> wird ausgeführt, wenn der Mauszeiger auf ein Component geführt wurde und keine Maustaste gedrückt wird. Der kleine Unterschied zu mouseEntered und mouseExited von MouseListener ist der, dass die beiden Methoden nur einmal beim Hinein- bzw. Hinausbewegen des Components aufgerufen werden. mouseMoved wird hingegen bei jeder kleinsten Bewegung innerhalb des Components ausgeführt.
+</p>
+
+<p>
+    Vergiss nicht, dass ein Listener mit deiner MausMotionHandler- bzw. MausHandler-Klasse an ein Component hinzugefügt wird. Deshalb muss erst mit dem Component interagiert werden, damit der Listener aktiv wird.
+</p>
+
+<p><b>Code-Template mit MouseMotionListener-Interface</b></p>
+
+<p><b>MausMotionHandler-Klasse:</b></p>
+<pre><code>
+    import java.awt.event.MouseEvent;
+    import java.awt.event.MouseMotionListener;
+    
+    public class MausMotionHandler implements MouseMotionListener {
+        
+        //Konstruktor optional
+        public MausHandler() {}
+        
+        @Override
+        public void mouseDragged(MouseEvent e) {}
+        
+        @Override
+        public void mouseMoved(MouseEvent e) {}
+    }
+</code></pre><br>
+
+<p><b>Main-Klasse:</b></p>
+<pre><code>
+    ...
+    import javax.swing.JFrame;
+    ...
+    
+    public class Main {
+    
+        ...
+
+            //eine Methode
+            ...
+            JFrame frame = new JFrame();
+            MausMotionHandler mmh = new MausMotionHandler();
+        
+            //vergiss nicht, die neue Klasse als Listener an ein Component anzuhängen:
+            frame.addMouseMotionListener(mmh);
+            ...
+        
+        ...
+    }
+</code></pre><br>
+
+<p><b>Code-Template mit MouseMotionAdapter-Klasse</b></p>
+
+<p><b>MausMotionHandler-Klasse:</b></p>
+<p>Alle @Override-Methoden sind optional. Bitte lösche alle Methoden, die du leer lässt.</p>
+<pre><code>
+    import java.awt.event.MouseEvent;
+    import java.awt.event.MouseMotionAdapter; //Wichtig! Der Import ändert sich
+    
+    public class MausMotionHandler extends MouseMotionAdapter {
+        
+        //Konstruktor optional
+        public MausHandler() {}
+        
+        //Methode optional
+        @Override
+        public void mouseDragged(MouseEvent e) {}
+        
+        //Methode optional
+        @Override
+        public void mouseMoved(MouseEvent e) {}
+    }
+</code></pre><br>
+
+<p><b>Main-Klasse:</b></p>
+<p>Es ändert sich nichts für die Main-Klasse.</p>
+<pre><code>
+    ...
+    import javax.swing.JFrame;
+    ...
+    
+    public class Main {
+    
+        ...
+
+            //eine Methode
+            ...
+            JFrame frame = new JFrame();
+            MausMotionHandler mmh = new MausMotionHandler();
+        
+            //vergiss nicht, die neue Klasse als Listener an ein Component anzuhängen:
+            frame.addMouseMotionListener(mmh);
+            ...
+        
+        ...
+    }
+</code></pre><br>
+
+<p>
+    Die Adapter-Klassen sind zwar sinnvoller, aber als Programmierer muss man recherchieren/wissen, welche Klasse welche Interfaces implementiert hat, um dann zu wissen, welche Methoden überhaupt zur Verfügung stehen. Vielleicht hilft an dieser Stelle deine IDE dir mit seinen Vorschlägen oder Autovervollständigungen?
 </p>
