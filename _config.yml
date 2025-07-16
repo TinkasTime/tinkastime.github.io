@@ -53,3 +53,8 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+liquid:
+  error_mode: strict
+  strict_filters: true
+  strict_variables: true
