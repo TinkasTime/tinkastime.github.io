@@ -37,7 +37,7 @@ nav a {
     text-decoration: none;
     color: black;
 }
-.main-nav{
+.main-nav {
     list-style-type: none;
     list-style-position: inside;
     margin: 0;
@@ -60,34 +60,45 @@ main {
 
 
 
-.gl1{
+.gl1 {
     display: inline-grid;
     grid-template-columns: auto auto;
     padding: 3px;
 }
-.gl1-1{
+.gl1-1 {
     grid-column: 1 / 3;
     text-align: center;
     padding: 3px;
     border: 1px solid black;
 }
-.gl1-2{
+.gl1-2 {
     padding: 3px;
     border: 1px solid black;
 }
-.gl1-3{
+.gl1-3 {
     padding: 3px;
     border: 1px solid black;
 }
 
-table, th, td{
+table, th, td {
     border: 1px solid black;
 }
-table{
+table {
     border-collapse: collapse;
     table-layout: auto;
 }
-td{
+td {
     text-align: left;
     width: auto;
+}
+
+
+
+img {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
